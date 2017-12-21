@@ -38,6 +38,38 @@ directions_ll = function(cc, ll) {
 	}
 }
 
+# adopted from sp:::LineLength setting too short ll distances to 0 
+LineLength_cor <- function (cc, longlat = FALSE, sum = TRUE) {
+  if (is(cc, "Line")) 
+    cc = sp::coordinates(cc)
+  if (!is.matrix(cc)) 
+    stop("cc must be a matrix")
+  if (ncol(cc) != 2) 
+    stop("cc must have two columns")
+  if (!is.numeric(cc)) 
+    stop("cc must be numeric")
+  x <- as.double(cc[, 1])
+  y <- as.double(cc[, 2])
+  n <- as.integer(length(x))
+  if (n == 1) 
+    return(0)
+  lengths <- vector(mode = "double", length = (n - 1))
+  lonlat <- as.integer(longlat)
+  res <- .C("sp_lengths", x, y, n, lengths, lonlat, PACKAGE = "sp")[[4]]
+  isNan <- is.nan(res)
+  if (any(isNan) && longlat == 1L) {
+    # consider to double check the euclidean length of the unprojected cooridnates
+    # degress below 1e-10 are less than a tenth of a millimeter
+    res[isNan] <- 0
+    warning(paste(sum(isNan), "NAN(s) in LineLength have/has been set to zero; possibly due to numerical issues of calculating great circle distances of very close points."))
+  }
+  if (any(!is.finite(res))) 
+    stop("non-finite line lengths")
+  if (sum) 
+    sum(res)
+  else res
+}
+
 TrackStats = function(track) {
 	duration = diff(as.numeric(index(track@time))) # seconds
 	stopifnot(!any(duration == 0))
@@ -48,7 +80,7 @@ TrackStats = function(track) {
 	else {
 		cc = coordinates(track@sp)
 		ll = identical(is.projected(track), FALSE)
-		distance = LineLength(cc, ll, FALSE) 
+		distance = LineLength_cor(cc, ll, FALSE) 
 				# for sp 1.1-1: use spDists with segments = TRUE
 		if (ll) # distance is in km, transform to m:
 			distance = distance * 1000.0

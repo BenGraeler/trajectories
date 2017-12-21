@@ -53,7 +53,11 @@ x = approxTracksCollection(storms, by = "30 min", FUN = spline)
 plot(x, col = 'red', add = TRUE)
 
 TOTTRACK = as(storms, "data.frame")
-library(ks)
+
+if (!require(ks)) {
+  stop("install package 'ks' first")
+}
+
 U=TOTTRACK[,c("LON","LAT")]
 U=U[!is.na(U$LON),]
 H=diag(c(.2,.2))

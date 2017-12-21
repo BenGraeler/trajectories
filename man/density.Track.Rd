@@ -8,11 +8,11 @@ density.Track
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-density.Track(x)
+density.Track(X, timestamp, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{X}{
 %%     ~~Describe \code{x} here~~
 }
 }

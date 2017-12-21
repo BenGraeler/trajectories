@@ -8,7 +8,7 @@ plot.distrack
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-plot.distrack(x)
+plot.distrack(x, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

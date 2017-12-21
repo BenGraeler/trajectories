@@ -9,8 +9,8 @@ setGeneric(
 ## create corresponding lines
 ## returns a difftrack object
 compare.track <- function(tr1, tr2) {
-  if (!requireNamespace("xts", quietly = TRUE))
-    stop("package xts required for track comparison")
+  # if (!requireNamespace("xts", quietly = TRUE))
+  #   stop("package xts required for track comparison")
   if (!(xts::first(tr1@endTime) < xts::last(tr2@endTime) && xts::first(tr2@endTime) < xts::last(tr1@endTime)))
       stop("Time itervals don't overlap!")
   if (!identicalCRS(tr1, tr2))

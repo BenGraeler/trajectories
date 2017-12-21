@@ -3,8 +3,8 @@ auto.arima.Track <- function(X,...){
   xseries <- coordinates(X)[,"x"]
   yseries <- coordinates(X)[,"y"]
   
-  xfit <- auto.arima(xseries,...)
-  yfit <- auto.arima(yseries,...)
+  xfit <- forecast::auto.arima(xseries,...)
+  yfit <- forecast::auto.arima(yseries,...)
   
   out <- list(xfit,yfit)
   attr(out,"models") <- out

@@ -8,11 +8,11 @@ auto.arima.Track
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-auto.arima.Track(x)
+auto.arima.Track(X, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{X}{
 %%     ~~Describe \code{x} here~~
 }
 }

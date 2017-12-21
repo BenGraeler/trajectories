@@ -8,7 +8,7 @@ avedistTrack
 function avedistTrack accepts X as a list of tracks and reports the average distance between tracks over time, output is an object of class "distrack".
 }
 \usage{
-avedistTrack(x)
+avedistTrack(X, timestamp)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

@@ -8,7 +8,7 @@ plot.KTrack
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-plot.KTrack(x)
+plot.KTrack(x, type = "l", col = "grey70", ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

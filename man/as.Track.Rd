@@ -11,11 +11,11 @@ Function as.Track  accepts a dataframe (let say X) with three columns "xcoor", "
  to length of each column in X.
 }
 \usage{
-as.Track(x)
+as.Track(X, covariate)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{X}{
 %%     ~~Describe \code{x} here~~
 }
 }

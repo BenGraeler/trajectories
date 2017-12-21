@@ -9,11 +9,11 @@ tsqtracks returns a sequance of time based on a list of tracks (or a single obje
 
 }
 \usage{
-tsqTracks(x)
+tsqTracks(X, timestamp)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{X}{
 %%     ~~Describe \code{x} here~~
 }
 }

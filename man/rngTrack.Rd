@@ -8,11 +8,11 @@ rngTrack
 rngTrack returns the timerange of an object of class Track.
 }
 \usage{
-rngTrack(x)
+rngTrack(X)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{X}{
 %%     ~~Describe \code{x} here~~
 }
 }

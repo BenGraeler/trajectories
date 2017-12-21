@@ -8,11 +8,13 @@ Kinhom.Track
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-Kinhom.Track(x)
+Kinhom.Track(X, timestamp, correction = c("border", "bord.modif",
+                 "isotropic", "translate"), q, sigma = c("default",
+                 "bw.diggle", "bw.ppl", " bw.scott"), ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{X}{
 %%     ~~Describe \code{x} here~~
 }
 }

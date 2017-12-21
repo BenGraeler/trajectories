@@ -8,7 +8,8 @@ pcfinhom.Track
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-pcfinhom.Track(x)
+pcfinhom.Track(X, timestamp, correction = c("translate", "Ripley"),
+                 q, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

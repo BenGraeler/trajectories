@@ -8,7 +8,7 @@ as.Track.ppp
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-as.Track.ppp(x)
+as.Track.ppp(X, timestamp)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

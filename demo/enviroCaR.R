@@ -1,29 +1,31 @@
-## Shows how to se the enviroCaR R package to import enviroCar tracks.
-
-if (!require(devtools))
-	stop("install devtools first")
-
+## Shows how to use the enviroCaR R package to import enviroCar tracks.
 if (!require(enviroCaR)) {
-	devtools::install_github("enviroCar/enviroCaR"); 
-	library(enviroCaR)
+  if (!require(devtools))
+    stop("install devtools first")
+  devtools::install_github("enviroCar/enviroCaR"); 
+  library(enviroCaR)
 }
 
-## get all track ids
-ids <- getTrackIDs("https://envirocar.org/api/stable")
+serverUrl = "https://envirocar.org/api/stable"
+boundingbox = matrix(c(7.5,51.9,7.7,52.1),
+                     ncol=2,
+                     dimnames=list(c("x","y"), c("min","max")))
+interval = xts::.parseISO8601('2017-01-01T00:00/2017-05-31T23:59')
 
-## get ids using a bounding box and a time interval
-## bounding box
-bbox <- matrix(c(7.318136,51.802163, 7.928939,52.105665), nrow=2, ncol=2)
+trackIDs = getTrackIDs(serverUrl,bbox = boundingbox, timeInterval = interval)
 
-## time interval: 96 hours
-t2 <- as.POSIXct("2015-01-20 10:11:20 CEST")
-t1 <- t2 - as.difftime(96, unit="hours")
+# how many tracks intersect with the space-time window?
+length(trackIDs)
 
-## get ids
-ids <- getTrackIDs("https://envirocar.org/api/stable", bbox, list(first.time = t1, last.time = t2))
+# fetch all these tracks from the enviroCar server
+trCol = importEnviroCar(serverUrl, trackIDs = trackIDs)
 
-## import tracks, returns a TracksCollection
-trcol <- importEnviroCar("https://envirocar.org/api/stable", ids)
+summary(trCol)
 
-## import single track, returns a Tracks object
-track <- importSingleTrack("https://envirocar.org/api/stable", ids[1])
+# what is the length of the collection
+length(trCol@tracksCollection)
+
+# importing a single track returns a Tracks object
+track <- importSingleTrack("https://envirocar.org/api/stable", trackIDs[1])
+
+plot(track)

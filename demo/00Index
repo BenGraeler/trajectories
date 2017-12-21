@@ -1,6 +1,6 @@
-Geolife		read Geolife 1.3 data (not supplied)
 stcube		stcube demo
-citibikenyc	citibikenyc
 storms		storms
-enviroCaR	enviroCaR demo
-google		read google history track, https://maps.google.com/locationhistory/
+enviroCaR	read sample tracks via enviroCaR from http://envirocar.org
+google		needs manual tuning: read google history track, load your own location history from: https://maps.google.com/locationhistory/
+Geolife		needs manual tuning: read Geolife 1.3; data not supplied
+citibikenyc	needs manual tuning: citibikenyc; data not supplied

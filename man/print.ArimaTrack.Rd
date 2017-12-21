@@ -8,11 +8,11 @@ print.ArimaTrack
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-print.ArimaTrack(x)
+print.ArimaTrack(X)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{X}{
 %%     ~~Describe \code{x} here~~
 }
 }
