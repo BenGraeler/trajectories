@@ -253,7 +253,7 @@ chimaps <- function(X,timestamp,rank,...){
 
 Kinhom.Track <- function(X,timestamp,
                 correction=c("border", "bord.modif", "isotropic", "translate"),q,
-                sigma=c("bw.diggle","bw.ppl"," bw.scott"),...){
+                sigma=c("default","bw.diggle","bw.ppl"," bw.scott"),...){
   
   stopifnot(length(X)>1 & is.list(X))
   
@@ -261,23 +261,41 @@ Kinhom.Track <- function(X,timestamp,
   
   cor <- match.arg(correction,correction)
   bw <- match.arg(sigma,sigma)
-  bw <- match.fun(bw)
-  ZZ <- density.Track(X,timestamp,bw)
-  
-  Z <- attr(ZZ,"Tracksim")
-  Y <- attr(ZZ,"ppps")
-  W <- Y[[1]]$window
-  ripley <- min(diff(W$xrange), diff(W$yrange))/4
-  rr <- seq(0,ripley,length.out = 513)
-  
-  K <- lapply(X=1:length(Y), function(i){
+  if (bw == "default") {
+    Y <- as.Track.ppp(X,timestamp = timestamp)
+    W <- Y[[1]]$window
+    ripley <- min(diff(W$xrange), diff(W$yrange))/4
+    rr <- seq(0,ripley,length.out = 513)
+    
+    K <- lapply(X=1:length(Y), function(i){
+      kk <- Kinhom(Y[[i]],correction=cor,r=rr,...)
+      return(as.data.frame(kk))
+    })
+    Kmat <- matrix(nrow = length(K[[1]]$theo),ncol = length(K))
+    for (i in 1:length(K)) {
+      Kmat[,i] <- K[[i]][,3]
+    }
+  }
+  else{
+    bw <- match.fun(bw)
+    ZZ <- density.Track(X,timestamp,bw)
+    
+    Z <- attr(ZZ,"Tracksim")
+    Y <- attr(ZZ,"ppps")
+    W <- Y[[1]]$window
+    ripley <- min(diff(W$xrange), diff(W$yrange))/4
+    rr <- seq(0,ripley,length.out = 513)
+    
+    K <- lapply(X=1:length(Y), function(i){
       kk <- Kinhom(Y[[i]],lambda = Z[[i]],correction=cor,r=rr,...)
       return(as.data.frame(kk))
-  })
-  Kmat <- matrix(nrow = length(K[[1]]$theo),ncol = length(K))
-  for (i in 1:length(K)) {
-    Kmat[,i] <- K[[i]][,3]
+    })
+    Kmat <- matrix(nrow = length(K[[1]]$theo),ncol = length(K))
+    for (i in 1:length(K)) {
+      Kmat[,i] <- K[[i]][,3]
+    }
   }
+  
   # Kmat <- as.data.frame(K)
   lowk <- numeric()
   upk <- numeric()
@@ -299,13 +317,14 @@ print.KTrack <- function(x){
 
 plot.KTrack <- function(x,type="l",col= "grey70",...){
   ylim <- c(min(x$lowk),max(x$upk))
-  plot(x$r,x$lowk,ylim=ylim,xlab="r",ylab="K(r)",type=type,...)
+  plot(x$r,x$lowk,ylim=ylim,type=type,xlab="",ylab="",...)
+  title(ylab=expression(K[inhom](r)),,xlab="r", line=2.2, cex.lab=1.2)
   points(x$r,x$upk,type=type)
   polygon(c(x$r, rev(x$r)), c(x$upk, rev(x$lowk)),
           col = col, border = NA)
   points(x$r,x$theo,type=type,col=2)
   points(x$r,x$avek,type=type)
-  legend(0,max(x$upk),col = c(2,1),legend=c("poisson","average"),lty=c(1,1))
+  legend(0,max(x$upk),col = c(2,0,1),legend=c(expression(K[inhom]^{pois}),"",expression(bar(K)[inhom])),lty=c(1,1))
 }
 
 pcfinhom.Track <- function(X,timestamp,
@@ -414,4 +433,5 @@ rTracks <- function (m = 20, start = as.POSIXct("1970-01-01"), delta = 7200,
 rTracksCollection <- function (p = 10, sd2 = 0, ...) 
   TracksCollection(lapply(1:p, function(x) rTracks(origin = rnorm(2, 
                                                                   sd = sd2), ...)))
+
 
