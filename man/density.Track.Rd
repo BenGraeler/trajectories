@@ -5,32 +5,30 @@
 density.Track
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Estimating the intensity of a list of tracks.
 }
 \usage{
-density.Track(X, timestamp, ...)
+density.Track(x,timestamp,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{X}{
-%%     ~~Describe \code{x} here~~
+  \item{x}{
+a list of objects of class "Track"
 }
+\item{timestamp}{based on secs,mins,...}
+\item{...}{passed to arguments of density.ppp}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+This estimate the average intensity function of moving objects over time. Bandwidth selection methods such as bw.diggle, bw.scott and bw.ppl can be passed to this density.Track.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+an image of class "im".
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Mohammad Mehdi Moradi <moradi@uji.es>
 }
 \note{
 %%  ~~further notes~~
@@ -39,17 +37,15 @@ density.Track(X, timestamp, ...)
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\link[trajectories]{rTrack}, \link[spatstat]{density.ppp}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x) 
-{
-  }
+X <- list()
+for(i in 1:10){
+  m <- matrix(c(0,10,0,10),nrow=2,byrow = T)
+  X[[i]] <- rTrack(bbox = m,transform = T)
+}
+density.Track(X,"30 secs")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

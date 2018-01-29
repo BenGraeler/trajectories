@@ -1,24 +1,26 @@
-\name{print.arwlen}
-\alias{print.arwlen}
+\name{print.Tracks}
+\alias{print.Tracks}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-print.arwlen
+print.Tracks
 }
 \description{
-to print an object of class "arwlen".}
+method to print an object of class "Tracks"}
 \usage{
-print.arwlen(x)
+print.Tracks(x)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-an object of class "arqlen"
+an object of class "Tracks"
 }
 }
 \details{
-none.}
+none
+%%  ~~ If necessary, more details than the description above ~~
+}
 \value{
-none.
+none
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -36,7 +38,7 @@ Mohammad Mehdi Moradi <moradi@uji.es>
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-none.
+none
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
