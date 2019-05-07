@@ -2,18 +2,18 @@
 \alias{Kinhom.Track}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Kinhom.Track
+Inhomogeneous K-function for trajectory pattern
 }
 \description{
 Estimate the variability area of K-function of a list of tracks.}
 \usage{
-Kinhom.Track(x,timestamp,
+Kinhom.Track(X,timestamp,
                 correction=c("border", "bord.modif", "isotropic", "translate"),q,
                 sigma=c("default","bw.diggle","bw.ppl"," bw.scott"),...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-   \item{x}{
+   \item{X}{
 A list of Track objects
 }
 \item{timestamp}{based on secs,mins,...}
@@ -28,14 +28,8 @@ This calculates the variability area of K-function over time. If sigma=default, 
 \value{
 an object of class "KTrack".
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Mohammad Mehdi Moradi <moradi@uji.es>
-}
-\note{
-%%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -43,12 +37,13 @@ Mohammad Mehdi Moradi <moradi@uji.es>
 \seealso{
 \link[trajectories]{rTrack}, \link[trajectories]{as.Track.ppp}, \link[spatstat]{Kinhom}}
 \examples{
+library(spatstat)
 X <- list()
 for(i in 1:100){
-  m <- matrix(c(0,10,0,10),nrow=2,byrow = T)
-  X[[i]] <- rTrack(bbox = m,transform = T)
+  m <- matrix(c(0,10,0,10),nrow=2,byrow = TRUE)
+  X[[i]] <- rTrack(bbox = m,transform = TRUE)
 }
-Kinhom.Track(X,timestamp = "30 secs")
+Kinhom.Track(X,timestamp = "180 secs")
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

@@ -8,7 +8,7 @@
 \description{Generate random \code{Track}, \code{Tracks} or \code{TracksCollection} objects}
 \usage{
 rTrack(n = 100, origin = c(0,0), start = as.POSIXct("1970-01-01"), ar = .8, 
-	step = 60, sd0 = 1,bbox=bbox, transform=FALSE,nrandom=FALSE, ...)
+	step = 60, sd0 = 1, bbox = bbox, transform = FALSE, nrandom = FALSE, ...)
 rTracks(m = 20, start = as.POSIXct("1970-01-01"), delta = 7200, sd1 = 0, 
 	origin = c(0,0), ...)
 rTracksCollection(p = 10, sd2 = 0, ...)
@@ -22,9 +22,9 @@ rTracksCollection(p = 10, sd2 = 0, ...)
 \item{sd0}{standard deviation of the random steps in a Track}
 \item{sd1}{standard deviation of the consecutive Track origin values (using rnorm)}
 \item{sd2}{standard deviation of the consecutive Tracks origin values (using rnorm)}
-\item{bbox}{box of track}
-\item{transform}{to transform track}
-\item{nrandom}{to set the number of locations of track as random number}
+\item{bbox}{bbox object FIXME:fill in}
+\item{transform}{logical; FIXME:fill in }
+\item{nrandom}{logical; if \code{TRUE}, draw \code{n} from \code{rpois(n)}}
 \item{...}{rTrack: arguments passed on to \link[stats]{arima.sim}, rTracks: arguments
 passed on to rTrack; rTracksCollection: arguments passed on to rTracks}
 \item{m}{ number of Track objects to simulate}
@@ -44,13 +44,13 @@ Mohammad Mehdi Moradi <moradi@uji.es>
 x = rTrack()
 dim(x)
 plot(x)
-x = rTracks(sd1 = 120)
-dim(x)
-plot(as(x, "SpatialLines"), col = 1:dim(x)[1], axes=TRUE)
-x = rTracksCollection() # star
-dim(x)
-plot(x)
-x = rTracksCollection(sd2 = 200)
+# x = rTracks(sd1 = 120)
+# dim(x)
+# plot(as(x, "SpatialLines"), col = 1:dim(x)[1], axes=TRUE)
+# x = rTracksCollection() # star
+# dim(x)
+# plot(x)
+x = rTracksCollection(sd2 = 200,p=4,m=10)
 plot(x, col=1:dim(x)[1])
 }
 \keyword{random}

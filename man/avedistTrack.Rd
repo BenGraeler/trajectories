@@ -2,17 +2,17 @@
 \alias{avedistTrack}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Average pairwise distance between tracks over time
+Average pairwise distance of trajectory pattern over time
 }
 \description{
 This measures the average of pairwise distances between tracks over time.
 }
 \usage{
-avedistTrack(x,timestamp)
+avedistTrack(X,timestamp)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{a list of some objects of class "Track"
+  \item{X}{a list of some objects of class "Track"
 %%     ~~Describe \code{x} here~~
 }
 \item{timestamp}{timestamp to calculate the pairwise distances between tarcks}
@@ -23,14 +23,8 @@ This function calculates the average pairwise distance between a list of tracks 
 \value{
 An object of class "distrack". It can be plotted over time.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Mohammad Mehdi Moradi <moradi@uji.es>
-}
-\note{
-%%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -41,11 +35,11 @@ Mohammad Mehdi Moradi <moradi@uji.es>
 \examples{
 X <- list()
 for(i in 1:10){
-  m <- matrix(c(0,10,0,10),nrow=2,byrow = T)
-  X[[i]] <- rTrack(bbox = m,transform = T)
+  m <- matrix(c(0,10,0,10),nrow=2,byrow = TRUE)
+  X[[i]] <- rTrack(bbox = m,transform = TRUE)
 }
 
-ave <- avedistTrack(X,timestamp = "30 secs")
+ave <- avedistTrack(X,timestamp = "120 secs")
 plot(ave,type="l")
 
 

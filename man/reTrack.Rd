@@ -8,11 +8,11 @@ Reconstruct objects of class "Track"
 Function reTrack accepts X as an object of class "Track". Output is a reconstructed Track (again an object of class Track), based on a regular "timestamp". It only returns the interpolated points.
 }
 \usage{
-reTrack(x,at=c("track","dfrm"),timestamp=timestamp,tsq=NULL)
+reTrack(X,at=c("track","dfrm"),timestamp=timestamp,tsq=NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{X}{
 an object of class Track
 }
 \item{at}{
@@ -29,16 +29,10 @@ a time sequence to reconstruct Track X based on it. This is optional. If this is
 Sometimes tracks data are not collected according to a regular timestamp. In order to compare different tracks which share some time intervals, we might need to be aware of the locations in a regular timestamp. Function reTrack unables us to reconstruct an object of class "Track" based on a regular timestamp. Time sequance can be given by user, if not reTrack creates a regulare time sequance based on the given timestamp. 
 }
 \value{
-Either an object of class "Track"" or a data.frame
-}
-\references{
-%% ~put references to the literature/web site here ~
+Either an object of class "Track" or a data.frame
 }
 \author{
 Mohammad Mehdi Moradi <moradi@uji.es>}
-\note{
-%%  ~~further notes~~
-}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

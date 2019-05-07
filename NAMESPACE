@@ -1,16 +1,13 @@
+import(lattice)
 import(methods)
 import(sp)
 import(spacetime)
-import(lattice)
 importFrom(stats, approx, as.formula, na.omit, quantile, rnorm, arima.sim,
-	rpois, runif)
-# importFrom(stats, aggregate, na.omit, time, start, end)
+	rpois, runif, density)
 importFrom(utils, head, tail, stack, unstack)
-importFrom(graphics, arrows, box, lines, points, segments, legend, polygon)
+importFrom(graphics, arrows, box, lines, points, segments, legend, polygon, title)
 importFrom(grDevices, rainbow, heat.colors)
-importFrom(spatstat, marks, psp, midpoints.psp, lengths.psp,
-  'marks<-', owin, as.ppp, pairdist, density.psp, density.ppp,
-  Kinhom, pcfinhom, idw)
+importFrom(zoo, "index<-")
 # importFrom(rgl, open3d, plot3d, lines3d)
 
 exportClasses(
@@ -31,10 +28,8 @@ export(
 	approxTrack, approxTracks, approxTracksCollection,
 	rTrack, rTracks, rTracksCollection, as.Track, as.Track.arrow,
 	as.Track.ppp, auto.arima.Track, avedistTrack, avemove, chimaps,
-	density.Track, Kinhom.Track, pcfinhom.Track, reTrack, Track.idw,
-	plot.arwlen,plot.distrack,plot.gTrack,plot.KTrack,print.ArimaTrack,
-	print.arwlen,print.distrack,print.gTrack,print.KTrack,print.Track,
-	print.Tracks,print.TracksCollection,print.Trrow
+	Kinhom.Track, pcfinhom.Track, reTrack, Track.idw,
+	tsqTracks, unique.Track,as.list.Tracks,as.list.TracksCollection,range.Track
 )
 
 exportMethods(
@@ -53,14 +48,28 @@ exportMethods(
 S3method(cut, Track)
 S3method(cut, Tracks)
 S3method(cut, TracksCollection)
-
+S3method(density, list)
 S3method(dim, Track)
 S3method(dim, Tracks)
 S3method(dim, TracksCollection)
-
+S3method("index<-", Track)
+S3method(plot, KTrack)
+S3method(plot, distrack)
+S3method(plot, gTrack)
+S3method(plot, arwlen)
 S3method(print, summary.Track)
 S3method(print, summary.Tracks)
 S3method(print, summary.TracksCollection)
+S3method("print", "arwlen")
+S3method("print", "distrack")
+S3method("print", "gTrack")
+S3method("print", "KTrack")
+S3method("print", "Trrow")
+S3method("print", "ArimaTrack")
+S3method("as", "list.Tracks")
+S3method("as", "list.TracksCollection")
+S3method("unique", "Track")
+S3method("range", "Track")
 
 S3method(stack, TracksCollection)
 

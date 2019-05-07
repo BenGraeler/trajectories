@@ -2,17 +2,17 @@
 \alias{as.Track.arrow}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-as.Track.arrow
+Convert trajectory pattern to a list of marked point patterns
 }
 \description{
 Converting a list of Track objects to a list of marked point patterns. Each mark shows the length of movement.
 }
 \usage{
-as.Track.arrow(x,timestamp,epsilon=epsilon)
+as.Track.arrow(X,timestamp,epsilon=epsilon)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{X}{
 A list of Track objects
 }
 \item{timestamp}{based on secs, mins,...}
@@ -24,16 +24,9 @@ Converting a list of Track objetcs to a list of marked point patterns. Marks sho
 \value{
 a list of marked point patterns.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Mohammad Mehdi Moradi <moradi@uji.es>
 }
-\note{
-%%  ~~further notes~~
-}
-
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
@@ -42,10 +35,10 @@ Mohammad Mehdi Moradi <moradi@uji.es>
 \examples{
 X <- list()
 for(i in 1:10){
-  m <- matrix(c(0,10,0,10),nrow=2,byrow = T)
-  X[[i]] <- rTrack(bbox = m,transform = T)
+  m <- matrix(c(0,10,0,10),nrow=2,byrow = TRUE)
+  X[[i]] <- rTrack(bbox = m,transform = TRUE)
 }
-as.Track.arrow(X,timestamp="30 secs")
+Y <- as.Track.arrow(X,timestamp="120 secs")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

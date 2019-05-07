@@ -13,11 +13,11 @@ rTrack <- function (n = 100, origin = c(0, 0), start = as.POSIXct("1970-01-01"),
     origin <- c(xo,yo)
   }
   if (length(ar) == 1 && ar == 0) 
-    xy = cbind(cumsum(rnorm(n, sd = sd0)) + origin[1], cumsum(rnorm(n, 
+    xy = cbind(x=cumsum(rnorm(n, sd = sd0)) + origin[1], y=cumsum(rnorm(n, 
                                                                     sd = sd0)) + origin[2])
-  else {xy = cbind(origin[1] + cumsum(as.vector(arima.sim(list(ar = ar), 
+  else {xy = cbind(x=origin[1] + cumsum(as.vector(arima.sim(list(ar = ar), 
                                                           n, sd = sd0, ...))), 
-                   origin[2] + cumsum(as.vector(arima.sim(list(ar = ar), 
+                   y=origin[2] + cumsum(as.vector(arima.sim(list(ar = ar), 
                                                           
                                                           n, sd = sd0, ...))))}
   if(transform) {
@@ -52,12 +52,19 @@ rTracksCollection <- function (p = 10, sd2 = 0, ...)
                                                                   sd = sd2), ...)))
 
 
-print.Track <- function(X){
-  cat("Random Track \n");
-  cat(paste0(nrow(as.data.frame(X@sp)), "points"),"\n");
+print.Track <- function(x,...){
+  X = x
+  if (class(X@sp)=="SpatialPoints") {
+    cat("An object of class Track \n");
+    cat(paste0(nrow(as.data.frame(X@sp)), "points"),"\n");
+    }
+  if (class(X@sp)=="SpatialLines") {
+    cat("A generalized object of class Track \n");
+    cat(paste0(length(X@sp@lines), "lines"),"\n"); 
+  }
   cat(paste0("bbox:"),"\n");
   print(X@sp@bbox);
-  cat("\n",paste0("Time period: [",range(X@endTime)[1],", ", range(X@endTime)[2],"]"))
+  cat(paste0("Time period: [",range(X@endTime)[1],", ", range(X@endTime)[2],"]"))
 }
 
 print.Tracks <- function(X){

@@ -9,11 +9,11 @@ tsqtracks returns a sequance of time based on a list of tracks (or a single obje
 
 }
 \usage{
-tsqTracks(x,timestamp)
+tsqTracks(X,timestamp)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{either an object of class "Track"" or a list of some objects of class "Track"
+  \item{X}{either an object of class "Track"" or a list of some objects of class "Track"
 %%     ~~Describe \code{x} here~~
 }
 \item{timestamp}{a timestamp to create the time sequence based on it}
@@ -25,14 +25,8 @@ This creates a sequence of time based on a track or a list of tracks.
 \value{
 An object of class "POSIXct" or "POSIXt".
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Mohammad Mehdi Moradi <moradi@uji.es>}
-\note{
-%%  ~~further notes~~
-}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

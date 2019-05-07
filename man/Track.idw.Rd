@@ -2,17 +2,17 @@
 \alias{Track.idw}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Track.idw
+Movement smoothing of trajectory pattern
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Movement smoothing of trajectory pattern
 }
 \usage{
-Track.idw(x,timestamp,epsilon=epsilon,...)
+Track.idw(X,timestamp,epsilon=epsilon,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{X}{
 a list of objects of class "Track"
 }
 \item{timestamp}{
@@ -27,14 +27,8 @@ Performs spatial smoothing to the movements of a list of tracks.
 \value{
 an image of class "im".
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Mohammad Mehdi Moradi <moradi@uji.es>
-}
-\note{
-%%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -44,10 +38,10 @@ Mohammad Mehdi Moradi <moradi@uji.es>
 \examples{
 X <- list()
 for(i in 1:10){
-  m <- matrix(c(0,10,0,10),nrow=2,byrow = T)
-  X[[i]] <- rTrack(bbox = m,transform = T)
+  m <- matrix(c(0,10,0,10),nrow=2,byrow = TRUE)
+  X[[i]] <- rTrack(bbox = m,transform = TRUE)
 }
-Track.idw(X,timestamp="30 secs")
+Track.idw(X,timestamp="180 secs")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

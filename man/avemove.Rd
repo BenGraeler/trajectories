@@ -2,17 +2,17 @@
 \alias{avemove}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-average movement of moving objects
+Average movement of trajectory pattern
 }
 \description{
 This returns the average movements of a lits of objects of class "Track" over time.
 }
 \usage{
-avemove(x,timestamp,epsilon=epsilon)
+avemove(X,timestamp,epsilon=epsilon)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{a list of some objects of class Track
+  \item{X}{a list of some objects of class Track
 %%     ~~Describe \code{x} here~~
 }
 \item{timestamp}{timestamp to calculate the pairwise distances between tarcks}
@@ -23,14 +23,8 @@ when analysying a list of tracks, avemove calculate the average of movements bas
 \value{
 an object of class "numeric" or "arwlen".
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Mohammad Mehdi Moradi <moradi@uji.es>
-}
-\note{
-%%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -41,8 +35,8 @@ Mohammad Mehdi Moradi <moradi@uji.es>
 \examples{
 X <- list()
 for(i in 1:10){
-  m <- matrix(c(0,10,0,10),nrow=2,byrow = T)
-  X[[i]] <- rTrack(bbox = m,transform = T)
+  m <- matrix(c(0,10,0,10),nrow=2,byrow = TRUE)
+  X[[i]] <- rTrack(bbox = m,transform = TRUE)
 }
 avemove(X,timestamp = "30 secs")
 }

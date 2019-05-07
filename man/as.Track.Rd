@@ -10,7 +10,7 @@ Function as.Track  accepts converts x,y coordinates and thier corresponding time
  to length of x,y,t.
 }
 \usage{
-as.Track(x,y,t)
+as.Track(x,y,t,covariate)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,20 +20,16 @@ as.Track(x,y,t)
 }
 \item{t}{ corresponding time and date of x,y.
 }
+\item{covariate}{ additional information.
+}
 }
 \details{
 An object of class "Track" can be created by some geographical locations and corresponding time/dates. Function as.Track converts locations and dates/times to an object of class "Track". time/date should be from class "POSIXct" "POSIXt". See example below.
 }
 \value{
 An object of class "Track".}
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Mohammad Mehdi Moradi <moradi@uji.es>
-}
-\note{
-%%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -46,7 +42,8 @@ x <- runif(10,0,1)
 y <- runif(10,0,1)
 date <- seq(as.POSIXct("2015-1-1 0:00"), as.POSIXct("2015-1-1 9:00"), by = "hour")
 Z <- as.Track(x,y,date)
-plot(Z)}
+plot(Z)
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
