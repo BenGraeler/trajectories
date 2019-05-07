@@ -3,7 +3,7 @@ Version: 0.2-1
 Title: Classes and Methods for Trajectory Data
 Authors@R: c(person("Edzer", "Pebesma", role = c("aut", "cre"), email = "edzer.pebesma@uni-muenster.de", comment = c(ORCID = "0000-0001-8049-7069")),
 	person("Benedikt", "Klus", role = "aut"),
-	person("Benedikt", "Graeler", role = "ctb"),
+	person("Benedikt", "Graeler", role = "ctb", comment = c(ORCID = "0000-0001-5443-4304")),
 	person("Nikolai", "Gorte", role = "ctb"),
 	person("Mehdi", "Moradi", role = "aut"))
 Depends: R (>= 3.0.0)
@@ -18,7 +18,7 @@ Additional_repositories: http://pebesma.staff.ifgi.de
 BugReports: http://github.com/edzer/trajectories/issues
 VignetteBuilder: knitr
 Collate: Class-Tracks.R Tracks-methods.R generalize.R stcube.R stplot.R
-        difftrack.R compare-methods.R rtracks.R Trackstat.R
+        difftrack.R compare-methods.R rtracks.R Trackstat.R auto.arima.Track.R
 RoxygenNote: 6.0.1
 NeedsCompilation: no
 Packaged: 2018-09-25 11:59:22 UTC; edzer
